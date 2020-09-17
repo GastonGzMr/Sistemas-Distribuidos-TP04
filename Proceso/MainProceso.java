@@ -35,11 +35,15 @@ public class MainProceso {
                     System.out.println("Esperando mensajes...");
                     paqueteRecibido = proceso.RecibirMensajes();
                     System.out.println("Se ha recibido un mensaje. Presione 'A' para aceptarlo");
-                    resultado = false;
-            
+                    
                     //Si se acepta el mensaje
                     if (scanner.nextLine().toUpperCase().equals("A")) {
                         resultado = proceso.AceptarYEsperar(paqueteRecibido.getAddress(), paqueteRecibido.getPort());
+                    }
+                    
+                    //Si no
+                    else {
+                        resultado = false;
                     }
             
                     //Si puede aceptarse el mensaje

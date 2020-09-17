@@ -34,7 +34,7 @@ public class Proceso {
     //si el paquete debe ser descartado.
     public boolean AceptarYEsperar(InetAddress pDireccionCoordinador, int pPuertoCoordinador) throws Exception {
         //Elementos del proceso
-        int maximoTiempoDeEspera = 1000;
+        int maximoTiempoDeEspera = 15000;
         String mensaje = "ACK";
         DatagramPacket paqueteAEnviar = new DatagramPacket(mensaje.getBytes(), mensaje.length(), pDireccionCoordinador, pPuertoCoordinador);
         byte[] buffer = new byte[1024];
@@ -54,7 +54,7 @@ public class Proceso {
                 
             //Si recibe la indicación de que debe descartar el mensaje
             //anterior, avisa al main.
-            if (mensajeRecibido.equals("DES")) {
+            if (mensajeRecibido.trim().equals("DES")) {
                 puedeAceptarse = false;
             }
         }
